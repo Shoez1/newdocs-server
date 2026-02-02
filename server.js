@@ -135,7 +135,11 @@ fastify.register(require('@fastify/static'), {
   prefix: '/',
 });
 
-fastify.get(['/', '/t/:id'], async (req, reply) => {
+fastify.get('/', async (req, reply) => {
+  return reply.sendFile('index.html');
+});
+
+fastify.get('/t/:id', async (req, reply) => {
   return reply.sendFile('index.html');
 });
 
