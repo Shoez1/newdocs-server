@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewDocs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="max-w-3xl mx-auto px-4 py-10">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-xl font-semibold tracking-tight">NewDocs</a>
+        <div class="text-sm text-slate-400">envie arquivos e gere um link</div>
+      </div>
+
+      <div id="page-upload" class="mt-10 hidden">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <div class="text-lg font-semibold">Enviar arquivos</div>
+          <div class="mt-1 text-sm text-slate-400">Sem conta. Arraste e solte ou selecione.</div>
+
+          <div
+            id="dropzone"
+            class="mt-5 rounded-xl border border-dashed border-slate-700 bg-slate-950/30 p-10 text-center"
+          >
+            <div class="text-slate-200 font-medium">Arraste seus arquivos aqui</div>
+            <div class="mt-1 text-sm text-slate-400">ou</div>
+            <div class="mt-4">
+              <input id="fileInput" type="file" multiple class="hidden" />
+              <button
+                id="btnPick"
+                class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-400"
+              >
+                Selecionar arquivos
+              </button>
+            </div>
+            <div id="selectedInfo" class="mt-4 text-sm text-slate-400"></div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button
+              id="btnUpload"
+              class="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-400 disabled:opacity-50"
+              disabled
+            >
+              Enviar
+            </button>
+            <div id="uploadStatus" class="text-sm text-slate-400"></div>
+          </div>
+
+          <div class="mt-4">
+            <div class="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+              <div id="progressBar" class="h-2 w-0 bg-emerald-400"></div>
+            </div>
+          </div>
+
+          <div id="result" class="mt-6 hidden rounded-xl border border-slate-800 bg-slate-950/30 p-4">
+            <div class="text-sm text-slate-400">Seu link:</div>
+            <div class="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <input
+                id="resultLink"
+                class="w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-sm text-slate-100"
+                readonly
+              />
+              <button
+                id="btnCopy"
+                class="inline-flex items-center justify-center rounded-lg bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-slate-700"
+              >
+                Copiar
+              </button>
+            </div>
+            <div id="expiresInfo" class="mt-3 text-xs text-slate-400"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-transfer" class="mt-10 hidden">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+          <div class="text-lg font-semibold">Arquivos</div>
+          <div id="transferMeta" class="mt-1 text-sm text-slate-400"></div>
+
+          <div id="transferError" class="mt-6 hidden rounded-xl border border-red-900/40 bg-red-950/30 p-4 text-sm text-red-200"></div>
+
+          <div id="filesList" class="mt-6 space-y-3"></div>
+
+          <div class="mt-8">
+            <a href="/" class="text-sm text-slate-300 underline">enviar outros arquivos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-xs text-slate-500">
+        Hospedável (Node). Sem conta. Links expiram automaticamente.
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
